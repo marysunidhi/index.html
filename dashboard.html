@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Fake News Detection System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-body">
+    <div class="background-effects">
+        <div class="glow-1"></div>
+        <div class="glow-2"></div>
+        <div class="glow-3"></div>
+    </div>
+
+    <nav class="sidebar glass-panel">
+        <div class="sidebar-header">
+            <div class="logo-icon small">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3>FND System</h3>
+        </div>
+        <ul class="nav-links">
+            <li class="active"><a href="#"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fa-solid fa-cloud-arrow-up"></i> News Input Module</a></li>
+            <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i> Analyze News</a></li>
+            <li><a href="#"><i class="fa-solid fa-database"></i> Fact-Checking DB</a></li>
+            <li><a href="#"><i class="fa-solid fa-scale-balanced"></i> Source Credibility</a></li>
+            <li><a href="#"><i class="fa-solid fa-tower-broadcast"></i> Rumor Tracking</a></li>
+            <li><a href="#"><i class="fa-solid fa-chart-line"></i> Admin & Analytics</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="index.html" class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-header glass-panel">
+            <div class="header-search">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Search news articles, URLs, or topics...">
+            </div>
+            <div class="header-user">
+                <button class="notification-btn"><i class="fa-solid fa-bell"></i><span class="badge">3</span></button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="User">
+                    <span>Admin User</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- News Input Module & AI Detection -->
+            <div class="grid-item span-2 glass-panel feature-card">
+                <div class="card-header">
+                    <h4><i class="fa-solid fa-microchip"></i> Real-Time AI Detection Core</h4>
+                </div>
+                <div class="card-body detection-interface">
+                    <div class="input-tabs">
+                        <button class="tab active">Text Input</button>
+                        <button class="tab">News Article URL</button>
+                        <button class="tab">Social Media Feed</button>
+                        <button class="tab">User Report</button>
+                    </div>
+                    <textarea placeholder="Paste news article text here for analysis using deep learning model..."></textarea>
+                    <div class="action-bar">
+                        <button class="btn-primary analyze-btn" onclick="analyzeText()">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Analyze Content
+                            <div class="btn-glow"></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NLP Text Analysis Stats -->
+            <div class="grid-item glass-panel feature-card">
+                <div class="card-header">
+                    <h4><i class="fa-solid fa-brain"></i> NLP Analysis Metrics</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="nlpChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Features & Modules from Figure -->
+            <div class="grid-item glass-panel status-card">
+                <div class="status-icon info">
+                    <i class="fa-solid fa-check-double"></i>
+                </div>
+                <div class="status-text">
+                    <h3>Source Credibility Engine</h3>
+                    <p>8,432 Outlet ratings updated today</p>
+                </div>
+            </div>
+
+            <div class="grid-item glass-panel status-card">
+                <div class="status-icon warning">
+                    <i class="fa-solid fa-hashtag"></i>
+                </div>
+                <div class="status-text">
+                    <h3>Social Media Rumor Tracking</h3>
+                    <p>Alert: 3 trending disinformation spikes</p>
+                </div>
+            </div>
+
+            <div class="grid-item glass-panel status-card">
+                <div class="status-icon success">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+                <div class="status-text">
+                    <h3>Fact-Checking Database</h3>
+                    <p>Cross-verification syncing: Active</p>
+                </div>
+            </div>
+            
+            <div class="grid-item glass-panel status-card">
+                <div class="status-icon danger">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="status-text">
+                    <h3>Real-Time Validation Alerts</h3>
+                    <p>12 Immediate false info flags</p>
+                </div>
+            </div>
+
+            <!-- Deep Learning Architecture Visualization -->
+            <div class="grid-item span-3 glass-panel feature-card system-architecture">
+                <div class="card-header">
+                    <h4><i class="fa-solid fa-sitemap"></i> Fake News Detection Pipeline</h4>
+                </div>
+                <div class="architecture-diagram">
+                    <div class="arch-box">News Input Module<br><small>Articles, Feeds, Reports</small></div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <div class="arch-box">Data Preprocessing<br><small>Cleaning, Tokenization</small></div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <div class="arch-box highlight">AI Detection Core<br><small>Deep Learning Model</small></div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <div class="arch-box">Credibility Engine<br><small>Source Scoring</small></div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <div class="arch-box">Admin & Analytics<br><small>Results Classification</small></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Analysis Result -->
+    <div class="modal" id="analysisModal">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h3>Detection Results</h3>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body text-center">
+                <div class="score-ring">
+                    <div class="score-value">87%</div>
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                        <circle class="progress-ring__circle" stroke="#ef4444" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                    </svg>
+                </div>
+                <h2 class="text-danger mt-3">FAKE NEWS DETECTED</h2>
+                <div class="details-grid mt-4">
+                    <div class="detail-item">
+                        <span>Bias & Sensationalism Check</span>
+                        <div class="progress-bar"><div class="fill bg-danger" style="width: 90%"></div></div>
+                    </div>
+                    <div class="detail-item">
+                        <span>Source Credibility Score</span>
+                        <div class="progress-bar"><div class="fill bg-warning" style="width: 40%"></div></div>
+                    </div>
+                    <div class="detail-item">
+                        <span>Fact-Checking Cross-Verification</span>
+                        <div class="progress-bar"><div class="fill bg-danger" style="width: 15%"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">Close Details</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
